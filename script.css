@@ -1,0 +1,342 @@
+/* Configurações básicas que se aplicam a todos os elementos */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilizando o cabeçalho (apenas cor de fundo e padding) */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    /* Removemos o text-align: center daqui, pois o Flexbox faz o controle */
+}
+
+/* ----------------------------------------------- */
+/* CONTROLE DE LAYOUT COM FLEXBOX (HEADER) */
+/* ----------------------------------------------- */
+
+/* Container que alinha o título (h1) e a navegação (nav) lado a lado */
+.header-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; /* Distribui o espaço */
+    
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Reduz o tamanho da margem do título */
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* ----------------------------------------------- */
+/* ESTILO DA NAVEGAÇÃO (NAV E LINKS) */
+/* ----------------------------------------------- */
+
+/* Aplica Flexbox à barra de navegação (nav) e usa GAP para espaçamento moderno */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Adiciona 15px de espaço ENTRE os links */
+}
+
+/* Estilo do link individual (a) */
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0; /* Garante que não haja margem antiga interferindo */
+    padding: 10px 15px; /* Aumenta a área clicável */
+    transition: background-color 0.3s; /* Suaviza a transição de cores */
+}
+
+/* Efeito ao passar o mouse (hover) */
+nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* ----------------------------------------------- */
+/* ESTILO DO CONTEÚDO PRINCIPAL E RODAPÉ */
+/* ----------------------------------------------- */
+
+/* Estilizando o conteúdo principal */
+main {
+    padding: 20px;
+    padding-bottom: 70px; /* Adiciona espaço para o rodapé fixo */
+}
+
+/* Estilizando as seções */
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilizando o rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* ----------------------------------------------- */
+/* CONTROLE DE LAYOUTE COM CSS GRID */
+/* ----------------------------------------------- */
+
+.grid-layout {
+    /* ATIVA o Grid Layout. Transforma o main em um grid container. */
+    display: grid;
+
+    /* Define as colunas: 3 colunas de tamanho iguais */ 
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /* Define o espaço entre as caixas ( linhas e colunas) */
+    gap: 20px;
+
+    /* Adiciona padding interno para o conteúdo */
+    padding: 20px;
+
+    /* Centraliza o conteúdo e adiciona espaço para laterais (como no header) */
+    max-width: 1240px; /* Um pouco maior que o header */
+    margin: 20px auto;
+
+}
+
+/* --------------------------------------------- */
+/* RESPONSIVIDADE (MEDIA QUERIES) */
+/* --------------------------------------------- */
+
+/* Regras paras TELAS MÉDIAS (Tablets e laptores menores) */
+/* Quando a largura máxima de tela for 900 pixels ou menor */
+@media (max-width: 900px) {
+    /* 1. Mude o Grid para 2 colunas */
+    .grid-layout {
+        /* Difine 2 colunas de tamanhos iguais */
+        grid-template-columns:  1fr 1fr;
+    }
+
+    /* 2. Reduza o espaçamento do header/nav para ter mais espaço */
+    header {
+        padding: 15px 0;
+    }
+
+    .header-container {
+        /* Diminui o padding horizontal interno */
+        padding: 0 15px;
+    }
+}
+
+
+/* Regras para TELAS PQUENAS )Celulares  */
+/* Quando a largura máxima da tela for 600 pixels ou menos */
+@media (max-width: 600px) {
+
+    /* 1. Mude o Grid para 1 coluna */
+    .grid-layout {
+        /* Defina 1 coluna única, voltando ao layout empilhado */
+        grid-template-columns: 1fr;
+    }
+
+    /* 2. Faz título do header e os links quebrarem para linhas diferentes */
+    .header-container {
+        /* Mude a direção para coluna */
+        flex-direction: column;
+        text-align: center;
+        /* Adiciona espaço entre o título e a navegação */
+        gap: 10px;
+    }
+
+    /* 3. Ajusta o rodapé para não ter padding extra */
+    footer {
+        font-size: 0.8em;
+    }
+}
+
+/* --------------------------------------- */
+/* ESTILO DA SECÇÃO "SOBRE NÓS" */
+/* --------------------------------------- */
+
+/* Ativa o Flexbox no container */
+.sobre-container {
+    display: flex;
+    align-items: center; /* Alinha a imagem e o texto verticalmente */
+    gap: 30px; /* Cria um espaço de 30px entre a imagem e o texto */
+}
+
+/* Define o tamanho da imagem (Item 1 do Flex) */
+.sobre-imagem {
+    flex: 1; /* Faz a imagem ocupar 1 "Fração do espaço */
+}
+
+/* Garante que a imagem se ajustar à sua caixa (div) */
+.sobre-imagem img {
+    width: 100%; /* Faz a imagem ter 100% da largura da div .sobre-imagem */
+    border-radius: 8px; /* Cantos arredondados, igual ao cartão da secção */
+}
+
+/* Define o tamanho do texto (Item 2 do Flex) */
+.sobre-imagem {
+    flex: 2; /* Faz o texto ocupar 2 "frações do espaço (será mais largo) */
+}
+
+/* ----------------------------------------------- */
+/* LAYOUT DE CARDS COM FLEXBOX (Múltiplas Colunas) */
+/* ------------------------------------------------*/
+
+.cards-container {
+    display: flex;
+    gap: 20px; /* Espaço entre os cards */
+    padding: 0 20px; /*Alinha com margem do cabeçalho */
+}
+
+/* Estilos paca cada seção dentro do container de cards */
+.cards-container section {
+    flex: 1; /* Faz com que cada seção ocupe uma porçao igual de espaço */
+    /* Removendo a margem inferior para que o gap fucione */
+    margin-bottom: 0;
+}
+
+/* Precisamos ajustar a regra 'main' para remover o padding antigo */
+main {
+    /*MATENHA O QUE ESTIVER AQUI, mas garanta que não haja 'padding' superior/lateral que duplique o do cards-container */
+    padding: 20px 0; /* Ajusta o padding do main */
+    padding-bottom: 70px;
+}
+
+/* Atualize o estilo da seção para que a margem inferior original seja zero no novo layout */
+section {
+    /*ESTA É A REGRA ANTIGA APENAS ATUALIZE O MARGIN-BOTTOM */
+    background-color: white;
+    padding: 20px;
+    /* Mude de 'margin-bottom: 20px;' para 'margin-bottom: 0;' */
+    margin-bottom: 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* Adicione esta regra para garantir que o layout interno comece de cima */
+    /* Isso garante que o título fique no topo */
+    display: flex;
+    flex-direction: column;
+}
+
+/* AJUSTE PARA O FLEXBOX DENTRO DO CARD */
+.sobre-imagem {
+        flex: 1 0 35%; /* Mude para esta linha */
+        /* Explicação:
+        - flex-grow: 1 (Permite que cresça)
+        - flex-shrink: 0 (Impede que encolha DEMAIS)
+        - flex-basis: 35% (Baseia a laargura em 35% do container) */
+}
+
+.sobre-texto {
+    flex: 1 1 60%; /*Mude para esta linha */
+    /* Explicação:width;
+    - flex-grow: 1
+    - flex-shrink: 1
+    - flex-basis: 60% (Baseia a largura em 60% do container) */
+
+}
+
+/* ----------------------------------------------- */
+/* ESTILO DO FORMULÁRIO DE CONTATO /*
+/* ----------------------------------------------- */
+
+.contact-form {
+    display: flex;
+    flex-direction: column; /* Alinha os grupos de compos verticalmente */
+    gap: 15px; /* Espaço entre cada grupo de campo */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Faz o label ficar em cima de input */
+}
+
+/* Estilo para campos de input e a área de texto */ 
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc; /* Borda cizenta suave */
+    border-radius: 4px; /* Cantos levemente arredondados */
+    margin-top: 5px; /* Pequeno espaço entre o label e o campo */
+    font-family: inherit; /*Mantém a fonte do body */
+    font-size: 1em; 
+}
+
+/* Estilo do botão de Enviar */
+.submit-buttom {
+    background-color: #333; /* Cor escura do cabeçalho */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    font-size: 1em;
+    font-weight: bold;
+    transition: backgound-color 0.3s;
+}
+
+/* Efeito ao passar o mouse (hover) no botão */
+.submit-buttom:hover {
+    background-color: #555;
+    
+}
+
+/* =============================================== */
+/* RESPONSIVIDADE (MEDIA QUERIES) */
+/* =============================================== */
+
+/* Regras aplicadas APENAS quando a tela 768px ou menos (celular/Tablet) */
+@media (max-width: 768px) {
+    /* 1. LAYOUT PRINCIPAL (CARDS) */
+    /* Faz o conteiner dos cards ( as 3 colunas) voltar a ser vertical */
+    .cards-container {
+        flex-direction: column; /* Sobrescrever o comportamento para empilhar */
+    }
+
+    /* 2. LAYOUT DEENTRO DA SEÇÃO "SOBRE NÓS" (Imagem + Texto) */
+    /* A imagem e o texto também ficam empilhados em telas pequenas */
+    .sobre-container {
+        flex-direction: column;
+    }
+
+    /* 3. IMAGEM: Garante que a imagem use a largura total da tela */
+    .sobre-imagem {
+        flex: 1 1 100%; /* Permite que a imagem use a largura total (100%) */
+        /* Adiciona um espaço pequeno abaixo da imagem */
+        margin-bottom: 15px;
+    }
+
+    /* 4. TEXTO: Garante que o texto use a largura total da tela */
+    .sobre-texto {
+        flex: 1 1 100%; /* Permite que o texto use a largura total (100%) */
+    }
+
+    /* 5. AJUSTE DO CABEÇALHO */
+    /* Em telas muito pequenas, título e a navegação podem ficar esprimidos. Vamos empilhá-los também. */
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Dá um espaço para os links de navegação */
+    nav {
+        margin-top: 15px;
+    }
+}
