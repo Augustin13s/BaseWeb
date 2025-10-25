@@ -48,6 +48,24 @@ nav {
     gap: 15px; /* Adiciona 15px de espaço ENTRE os links */
 }
 
+/* Estilo básico para o novo botão */
+.dark-mode-button {
+    background: none; /* Sem fundo */
+    color: white; /* Texto branco */
+    border: 1px solid white; /* Borda fina branca */
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-left: 15px; /* Separar-o dos links */
+}
+
+.dark-mode-button:hover {
+    background-color: white;
+    color: #333; /* Texto escuro no hover */
+}
+
 /* Estilo do link individual (a) */
 nav a {
     color: white;
@@ -339,4 +357,25 @@ section {
     nav {
         margin-top: 15px;
     }
+}
+
+/* =============================================== */
+/* ESTILOS DO MODO ESCURO */
+/* =============================================== */
+
+/* Quando a classe 'dark-mode' está no body, muda as cores gerais */
+.dark-mode {
+    background-color: #121212 !important; /* Fundo muito escuro */
+    color: #e0e0e0 !important; /* Texto claro */
+}
+
+/* Muda a aparência das seções (cards) */
+.dark-mode section {
+    background-color: #1f1f1f !important; /* Fundo dos cards escuro */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1) !important; /* Sombra clara */
+}
+
+/* Muda a cor do footer (rodapé) */
+.dark-mode footer {
+    background-color: #000000 !important;
 }
